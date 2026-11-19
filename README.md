@@ -1,6 +1,6 @@
 # Descompresor de archivos
 
-Aplicación para seleccionar un archivo comprimido y la carpeta de destino desde una ventana. También conserva el modo por consola para descomprimir todos los archivos de una carpeta.
+Aplicación para seleccionar un archivo comprimido y la carpeta de destino desde una ventana. También extrae los comprimidos que encuentre dentro y conserva el modo por consola para buscar en una carpeta y sus subcarpetas.
 
 **Ruta configurada por defecto:**
 
@@ -29,11 +29,11 @@ D:\Documentos\Modulos QX\22.13\Ejecutables
 
 ## Uso de la ventana
 
-Abre `DescomprimirArchivo.exe`. Selecciona el archivo comprimido y la carpeta de destino, y pulsa **Aceptar y descomprimir**. Para abrir la ventana desde Python, ejecuta `python descomprimir.py --gui`.
+Abre `DescomprimirArchivo.exe`. Selecciona el archivo comprimido y la carpeta de destino, y pulsa **Aceptar y descomprimir**. También se extraerán los archivos comprimidos que estén dentro del archivo elegido, conservando las carpetas. Para abrir la ventana desde Python, ejecuta `python descomprimir.py --gui`.
 
 ## Modo por consola
 
-Para procesar todos los comprimidos de una carpeta:
+Para procesar todos los comprimidos de una carpeta y sus subcarpetas:
 
 1. Abre **CMD** o **PowerShell** y ve a la carpeta del script:
    ```
@@ -58,6 +58,7 @@ pyinstaller --onefile --windowed --name DescomprimirArchivo descomprimir.py
 El ejecutable se crea en la carpeta `dist`.
 
 ZIP y TAR funcionan sin dependencias externas. Para que el `.exe` procese `.7z`, `py7zr` debe estar instalado al compilar; los archivos `.rar` pueden requerir UnRAR o 7-Zip en el equipo.
+Se procesan hasta 50 niveles de archivos comprimidos anidados; si alguno falla, se informa en el resumen.
 
 ## Opciones de configuración
 
